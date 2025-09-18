@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Hub - Find Your Dream Job</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-left">
+            <a href="{% url 'job_list' %}" class="logo-link">
+                <img src="{% static 'img/logo.png' %}" alt="Career Hub Logo" class="logo">
+            </a>
+            <h1><a href="{% url 'job_list' %}">Career Hub</a></h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="{% url 'job_list' %}">Jobs</a></li>
+                    <li><a href="{% url 'company_list' %}">Companies</a></li>
+                    <li><a href="{% url 'about_us' %}">About Us</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'employer_dashboard' %}" class="post-job-btn">Post a Job</a></li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    <li><a href="{% url 'register' %}">Sign Up</a></li>
+                    <li><a href="{% url 'employer_dashboard' %}" class="post-job-btn">Post a Job</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+    </header>
+
+    <main class="container">
+        <section class="search-container">
+            <h2>Find Your Next Opportunity</h2>
+            <form action="#" method="get" class="search-form">
+                <input type="text" name="q" placeholder="Job title, keywords..." class="search-input">
+                <input type="text" name="location" placeholder="Location" class="search-input">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </section>
+        
+        <section class="job-listings">
+            <div class="tab-container">
+                <div class="tabs">
+                    <button class="tab-button active" onclick="openTab(event, 'latest-jobs')">Latest Jobs</button>
+                    <button class="tab-button" onclick="openTab(event, 'featured-jobs')">Featured Jobs</button>
+                    <button class="tab-button" onclick="openTab(event, 'jobs-by-category')">By Category</button>
+                </div>
+
+                <div id="latest-jobs" class="tab-content active">
+                    <h3>Latest Job Postings</h3>
+                    <div class="jobs-grid">
+                        {% for job in jobs %}
+                            <div class="job-card">
+                                <h3>{{ job.title }}</h3>
+                                <p><strong>Company:</strong> {{ job.company }}</p>
+                                <p><strong>Location:</strong> {{ job.location }}</p>
+                                <p>{{ job.description|truncatechars:150 }}</p>
+                                <small>Posted on: {{ job.posted_date|date:"F j, Y" }}</small>
+                                <a href="{% url 'job_detail' job.id %}" class="apply-btn">View Details</a> </div>
+                            </div>
+                        {% empty %}
+                            <p>No job postings are available at the moment. Please check back later!</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div id="featured-jobs" class="tab-content">
+                    <h3>Featured Job Opportunities</h3>
+                    <div class="jobs-grid">
+                        <p>Featured jobs will appear here.</p>
+                    </div>
+                </div>
+
+                <div id="jobs-by-category" class="tab-content">
+                    <h3>Browse Jobs by Category</h3>
+                    <div class="jobs-grid">
+                        <p>Job categories will be listed here.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Career Hub. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

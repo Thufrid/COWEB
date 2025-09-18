@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>All Companies | Career Hub</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <a href="{% url 'job_list' %}" class="logo-link">
+            <img src="{% static 'img/logo.png' %}" alt="Career Hub Logo" class="logo">
+        </a>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'job_list' %}">Jobs</a></li>
+                <li><a href="{% url 'company_list' %}">Companies</a></li>
+                <li><a href="#">About Us</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'employer_dashboard' %}" class="post-job-btn">Post a Job</a></li>
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Log In</a></li>
+                <li><a href="{% url 'register' %}">Sign Up</a></li>
+                <li><a href="{% url 'employer_dashboard' %}" class="post-job-btn">Post a Job</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="company-list-page">
+            <h2>All Companies</h2>
+            <div class="company-grid">
+                {% for company in companies %}
+                <div class="company-item">
+                    <a href="{% url 'company_detail' company %}">{{ company }}</a>
+                </div>
+                {% empty %}
+                <p>No companies found.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Career Hub. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
