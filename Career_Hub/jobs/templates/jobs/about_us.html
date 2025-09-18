@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Us | Career Hub</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <a href="{% url 'job_list' %}" class="logo-link">
+            <img src="{% static 'img/logo.png' %}" alt="Career Hub Logo" class="logo">
+        </a>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'job_list' %}">Jobs</a></li>
+                <li><a href="{% url 'company_list' %}">Companies</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'employer_dashboard' %}" class="post-job-btn">Post a Job</a></li>
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Log In</a></li>
+                <li><a href="{% url 'register' %}">Sign Up</a></li>
+                <li><a href="{% url 'employer_dashboard' %}" class="post-job-btn">Post a Job</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="about-us-content">
+            <h2>Our Mission</h2>
+            <p>At Career Hub, our mission is to connect talented professionals with exceptional job opportunities. We believe in building a platform that makes the job search process simple, transparent, and efficient for everyone.</p>
+
+            <h2>Our Story</h2>
+            <p>Founded in 2025, Career Hub was created by a team of computer science student (Level 100), we recognized the need for a more user-friendly and reliable job portal. We are dedicated to helping job seekers find their dream jobs and assisting companies in building the best teams possible.</p>
+
+            <h2>Meet the Team</h2>
+            <p>We are a small, dedicated team of developers, designer, working tirelessly to improve the platform and provide the best experience for our users.</p>
+            <h2>Members:</h2>
+            <p>Tetteh Mensah</p>
+            <p>Aurther George</p>
+            <p>Godwin Owusu</p>
+            <p>Felicia Akusika Eworyi</p>
+            <p>Sama-Banya Miracle</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Career Hub. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

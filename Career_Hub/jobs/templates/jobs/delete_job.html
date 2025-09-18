@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Delete Job | Career Hub</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <a href="{% url 'job_list' %}" class="logo-link">
+            <img src="{% static 'img/logo.png' %}" alt="Career Hub Logo" class="logo">
+        </a>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'job_list' %}">Jobs</a></li>
+                <li><a href="{% url 'company_list' %}">Companies</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'employer_dashboard' %}" class="post-job-btn">Post a Job</a></li>
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Log In</a></li>
+                <li><a href="{% url 'register' %}">Sign Up</a></li>
+                <li><a href="{% url 'employer_dashboard' %}" class="post-job-btn">Post a Job</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="delete-confirmation-page">
+            <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete the job titled "<strong>{{ job.title }}</strong>"?</p>
+            <p>This action cannot be undone.</p>
+            <form method="post">
+                {% csrf_token %}
+                <a href="{% url 'employer_dashboard' %}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Career Hub. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

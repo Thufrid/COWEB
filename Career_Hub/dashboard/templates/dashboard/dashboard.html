@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }}'s Dashboard | Career Hub</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <a href="{% url 'job_list' %}" class="logo-link">
+            <img src="{% static 'img/logo.png' %}" alt="Career Hub Logo" class="logo">
+        </a>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'job_list' %}">Jobs</a></li>
+                <li><a href="{% url 'company_list' %}">Companies</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'employer_dashboard' %}" class="post-job-btn">Post a Job</a></li>
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Log In</a></li>
+                <li><a href="{% url 'register' %}">Sign Up</a></li>
+                <li><a href="{% url 'employer_dashboard' %}" class="post-job-btn">Post a Job</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="dashboard-page">
+            <h2>Welcome, {{ user.username }}!</h2>
+            <p>This is your personalized dashboard. From here, you can manage your profile, view your job applications, and save jobs for later.</p>
+
+            <section class="dashboard-section">
+                <h3>Your Profile</h3>
+                <div class="profile-info">
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <a href="#" class="edit-profile-btn">Edit Profile</a>
+                </div>
+            </section>
+
+            <section class="dashboard-section">
+                <h3>Your Job Applications</h3>
+                <p>You have not applied for any jobs yet.</p>
+            </section>
+
+            <section class="dashboard-section">
+                <h3>Saved Jobs</h3>
+                <p>You have not saved any jobs yet.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Career Hub. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

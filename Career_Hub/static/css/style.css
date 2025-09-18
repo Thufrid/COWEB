@@ -1,0 +1,493 @@
+/* Basic styling for the entire page */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5dc; /* A soft cream for a clean, elegant background */
+    color: #333; /* Dark gray for text */
+}
+
+/* Container to center and limit the content width */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff; /* Clean white header */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid #e1e8f0;
+}
+/* New rule to align logo and text */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 26px;
+    color: #1a237e; /* A deep indigo blue for a sophisticated look */
+    font-weight: 700;
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+    .nav a:hover {
+        color: #ffc107; /* A bright yellow for hover */
+        transform: translateY(-2px);
+    }
+
+
+/* Search bar section */
+.search-container {
+    text-align: center;
+    padding: 80px 20px;
+    background-image: linear-gradient(135deg, #fceb9c 0%, #ffc107 100%); /* A striking yellow gradient background */
+    border-radius: 12px;
+    margin: 40px 0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+    .search-container h2 {
+        font-size: 44px;
+        color: #000000; /* Black for strong contrast on the yellow background */
+        margin-bottom: 25px;
+        font-weight: 800;
+    }
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.search-input {
+    width: 400px;
+    padding: 15px 20px;
+    border: 2px solid #b0bec5;
+    border-radius: 8px;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease;
+}
+
+    .search-input:focus {
+        outline: none;
+        border-color: #1a237e; /* Highlight on focus */
+    }
+
+.search-button {
+    padding: 15px 30px;
+    background-color: #1a237e; /* Deep blue for the button */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(26, 35, 126, 0.3);
+}
+
+    .search-button:hover {
+        background-color: #0d1b54; /* Darker blue on hover */
+        transform: translateY(-2px);
+    }
+
+/* Job listings section */
+.job-listings {
+    padding: 40px 0;
+}
+
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.job-card {
+    background-color: #ffffff;
+    border: 1px solid #e1e8f0;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .job-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .job-card h3 {
+        margin: 0 0 10px;
+        font-size: 22px;
+        color: #1a237e;
+        font-weight: 600;
+    }
+
+    .job-card p {
+        margin: 5px 0;
+        color: #666;
+        font-size: 15px;
+    }
+
+    .job-card .apply-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 24px;
+        background-color: #000000; /* Black for a strong action button */
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+        font-weight: 600;
+    }
+
+        .job-card .apply-btn:hover {
+            background-color: #333333; /* Lighter black on hover */
+        }
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .search-form {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+}
+
+/* Tab styling */
+.tab-container {
+    margin: 30px 0;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 25px;
+}
+
+.tab-button {
+    background-color: transparent;
+    border: none;
+    padding: 15px 30px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    font-weight: 600;
+    color: #666;
+}
+
+    .tab-button:hover {
+        background-color: #f5f5f5;
+    }
+
+    /* Active and content styling */
+    .tab-button.active {
+        border-bottom: 3px solid #1a237e;
+        font-weight: 700;
+        color: #1a237e;
+    }
+
+.tab-content {
+    display: none;
+    padding: 20px 0;
+}
+
+    .tab-content.active {
+        display: block;
+    }
+/* Example: CSS for a simple hover effect on a button */
+.search-button {
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+    .search-button:hover {
+        transform: translateY(-2px);
+        background-color: #0d1b54;
+    }
+
+/* Styling for the logo */
+.logo {
+    height: 60px;
+    width: auto;
+}
+
+.logo-link {
+    display: block;
+    line-height: 0;
+}
+
+/* Job application form styling */
+.job-application-form {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 650px;
+}
+
+    .job-application-form h2 {
+        color: #1a237e;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #444;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="file"],
+    .form-group textarea {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 16px;
+        background-color: #f9f9f9;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+    }
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .submit-btn:hover {
+        background-color: #333333;
+        transform: translateY(-2px);
+    }
+
+/* Dashboard styling */
+.dashboard-page {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 950px;
+}
+
+    .dashboard-page h2 {
+        color: #1a237e;
+        margin-bottom: 30px;
+    }
+
+.dashboard-section {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #e1e8f0;
+    margin-top: 25px;
+}
+
+    .dashboard-section h3 {
+        color: #1a237e;
+        margin-top: 0;
+    }
+
+.profile-info p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.edit-profile-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1a237e;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.logout-link {
+    text-align: right;
+    margin-top: 25px;
+}
+
+/* Employer Dashboard Styling */
+.employer-dashboard-page {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 950px;
+}
+
+    .employer-dashboard-page h2 {
+        color: #1a237e;
+        margin-bottom: 30px;
+    }
+
+.dashboard-actions {
+    margin-bottom: 25px;
+    text-align: right;
+}
+
+.add-job-btn {
+    display: inline-block;
+    padding: 14px 24px;
+    background-color: #1a237e;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .add-job-btn:hover {
+        background-color: #0d1b54;
+        transform: translateY(-2px);
+    }
+
+.dashboard-section {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #e1e8f0;
+    margin-top: 25px;
+}
+
+.job-list-admin .job-item {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .job-list-admin .job-item:last-child {
+        border-bottom: none;
+    }
+
+.job-item h4 {
+    margin: 0;
+    font-size: 20px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.job-item p {
+    margin: 0;
+    color: #777;
+    font-size: 15px;
+}
+
+/* Login and Registration Form Styling */
+.login-form, .registration-form {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 450px;
+}
+
+    .login-form h2, .registration-form h2 {
+        color: #1a237e;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    .login-form .form-group, .registration-form .form-group {
+        margin-bottom: 25px;
+    }
+
+    .login-form label, .registration-form label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #444;
+    }
+
+    .login-form input, .registration-form input {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
+
+    .login-form .submit-btn, .registration-form .submit-btn {
+        width: 100%;
+        padding: 16px;
+        background-color: #1a237e;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 700;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .login-form .submit-btn:hover, .registration-form .submit-btn:hover {
+            background-color: #0d1b54;
+            transform: translateY(-2px);
+        }
